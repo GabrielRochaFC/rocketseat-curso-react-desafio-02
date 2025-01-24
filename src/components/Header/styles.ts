@@ -13,6 +13,7 @@ export const ButtonsDiv = styled.div`
   gap: 0.75rem;
 
   button {
+    font-size: 0.875rem;
     display: flex;
     align-items: center;
     justify-content: center;
