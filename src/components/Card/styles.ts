@@ -52,13 +52,76 @@ export const CardTags = styled.div`
   }
 `;
 
+export const PriceContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+`;
+
 export const Price = styled.div`
   font-size: 0.875rem;
+  flex: 1;
+  text-align: left;
 
   span {
     font-size: 1.5rem;
     font-weight: 800;
     font-family: "Baloo 2", cursive;
     color: ${(props) => props.theme["base-text"]};
+  }
+`;
+
+export const PriceInput = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+
+  background-color: ${(props) => props.theme["base-button"]};
+  padding: 0.5rem;
+  border-radius: 6px;
+
+  width: 4.5rem;
+
+  input {
+    width: 1.25rem;
+    background: none;
+    border: none;
+    text-align: center;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[type="number"] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+  }
+
+  span {
+    color: ${(props) => props.theme["purple"]};
+    cursor: pointer;
+  }
+`;
+
+export const CartButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.theme["purple-dark"]};
+  color: ${(props) => props.theme["base-card"]};
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: ${(props) => props.theme["purple"]};
   }
 `;
