@@ -6,6 +6,10 @@ export const HeaderContainer = styled.header`
   align-items: center;
   width: 100%;
   padding: 2rem 0;
+
+  img {
+    height: 2.5rem;
+  }
 `;
 
 export const ButtonsDiv = styled.div`
