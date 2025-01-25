@@ -2,12 +2,12 @@ import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import {
   CardComponent,
   CardTags,
-  CartButton,
   Price,
   PriceContainer,
   PriceInput,
 } from "./styles";
 import { useState } from "react";
+import { Button } from "../Button";
 
 interface CardProps {
   coffee: {
@@ -53,14 +53,21 @@ export function Card({ coffee }: CardProps) {
           <span onClick={() => handlePriceInput("minus")}>
             <Minus weight="bold" size={16} />
           </span>
-          <input type="number" min={1} step={1} value={inputValue} disabled />
+          <input
+            type="number"
+            min={1}
+            step={1}
+            value={inputValue}
+            disabled
+            id={"coffee-card-" + id}
+          />
           <span onClick={() => handlePriceInput("plus")}>
             <Plus weight="bold" size={16} />
           </span>
         </PriceInput>
-        <CartButton>
+        <Button variant="icon">
           <ShoppingCart size={22} weight="fill" />
-        </CartButton>
+        </Button>
       </PriceContainer>
     </CardComponent>
   );
