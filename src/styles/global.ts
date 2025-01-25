@@ -22,9 +22,15 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Roboto", sans-serif;
     font-size: 1rem;
     font-weight: 400;
+    line-height: 130%;
+  }
+
+  button {
+    line-height: 160%;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: "Baloo 2", cursive;
+    line-height: 130%;
   }
 `;

@@ -23,7 +23,6 @@ export const ButtonsDiv = styled.div`
     background-color: ${(props) => props.theme["purple-light"]};
     color: ${(props) => props.theme["purple-dark"]};
     border: none;
-    transition: background-color 0.2s, color 0.2s;
   }
 
   a {
