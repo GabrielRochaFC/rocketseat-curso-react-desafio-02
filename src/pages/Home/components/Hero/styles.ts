@@ -37,7 +37,7 @@ export const HeroTexts = styled.div`
 `;
 
 interface listProps {
-  backgroundSpanColor: "purple" | "yellow-dark" | "yellow" | "base-text";
+  $backgroundColor: "purple" | "yellow-dark" | "yellow" | "base-text";
 }
 
 export const HeroList = styled.li<listProps>`
@@ -52,7 +52,7 @@ export const HeroList = styled.li<listProps>`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${(props) => props.theme[props.backgroundSpanColor]};
+    background-color: ${(props) => props.theme[props.$backgroundColor]};
     border-radius: 50%;
   }
 `;

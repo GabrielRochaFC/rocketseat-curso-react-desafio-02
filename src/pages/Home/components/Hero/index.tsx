@@ -15,25 +15,25 @@ export function Hero() {
           </p>
         </div>
         <ul>
-          <HeroList backgroundSpanColor="yellow-dark">
+          <HeroList $backgroundColor="yellow-dark">
             <span>
               <ShoppingCart size={16} weight="fill" />
             </span>
             Compra simples e segura
           </HeroList>
-          <HeroList backgroundSpanColor="base-text">
+          <HeroList $backgroundColor="base-text">
             <span>
               <Package size={16} weight="fill" />
             </span>
             Embalagem mantém o café intacto
           </HeroList>
-          <HeroList backgroundSpanColor="yellow">
+          <HeroList $backgroundColor="yellow">
             <span>
               <Timer size={16} weight="fill" />
             </span>
             Entrega rápida e rastreada
           </HeroList>
-          <HeroList backgroundSpanColor="purple">
+          <HeroList $backgroundColor="purple">
             <span>
               <Coffee size={16} weight="fill" />
             </span>
