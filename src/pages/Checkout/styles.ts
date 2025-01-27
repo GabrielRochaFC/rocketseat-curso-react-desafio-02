@@ -10,6 +10,7 @@ export const CheckoutContainer = styled.div`
 
   h2 {
     padding-bottom: 1rem;
+    font-size: 1.125rem;
   }
 `;
 
@@ -33,17 +34,25 @@ export const ChechoutHeader = styled.div<ChechoutHeaderProps>`
   }
 `;
 
-export const CheckoutSection = styled.section`
+const CheckoutSection = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   padding: 2.5rem;
   background-color: ${(props) => props.theme["base-card"]};
-  border-radius: 6px;
 
   & + & {
     margin-top: 1rem;
   }
+`;
+
+export const AddressPaymentSection = styled(CheckoutSection)`
+  gap: 2rem;
+  border-radius: 6px;
+`;
+
+export const OrderSummarySection = styled(CheckoutSection)`
+  gap: 1.5rem;
+  border-radius: 6px 2.75rem 6px 2.75rem;
 `;
 
 export const InputsContainer = styled.div`

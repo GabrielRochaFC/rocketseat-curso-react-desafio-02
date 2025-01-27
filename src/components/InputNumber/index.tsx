@@ -3,10 +3,11 @@ import { InputNumberContainer } from "./styles";
 import { Minus, Plus } from "phosphor-react";
 
 interface InputNumberProps {
-  id: string;
+  id?: string;
+  height?: "2rem" | "2.375rem";
 }
 
-export function InputNumber({ id }: InputNumberProps) {
+export function InputNumber({ id, height = "2.375rem" }: InputNumberProps) {
   const [inputValue, setInputValue] = useState(1);
 
   function handlePriceInput(type: "plus" | "minus") {
@@ -19,7 +20,7 @@ export function InputNumber({ id }: InputNumberProps) {
     }
   }
   return (
-    <InputNumberContainer>
+    <InputNumberContainer $height={height}>
       <span onClick={() => handlePriceInput("minus")}>
         <Minus weight="bold" size={16} />
       </span>
@@ -29,7 +30,7 @@ export function InputNumber({ id }: InputNumberProps) {
         step={1}
         value={inputValue}
         disabled
-        id={"coffee-card-" + id}
+        id={id ? `coffee-card-${id}` : undefined}
       />
       <span onClick={() => handlePriceInput("plus")}>
         <Plus weight="bold" size={16} />

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const InputNumberContainer = styled.div`
+interface InputNumberContainerProps {
+  $height: "2rem" | "2.375rem";
+}
+
+export const InputNumberContainer = styled.div<InputNumberContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,6 +15,7 @@ export const InputNumberContainer = styled.div`
   border-radius: 6px;
 
   width: 4.5rem;
+  height: ${(props) => props.$height};
 
   input {
     width: 1.25rem;

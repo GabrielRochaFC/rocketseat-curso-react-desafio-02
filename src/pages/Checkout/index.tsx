@@ -4,19 +4,24 @@ import {
   CurrencyDollar,
   MapPinLine,
   Money,
-  Trash,
 } from "phosphor-react";
 import { Button } from "../../components/Button";
 import {
+  AddressPaymentSection,
   ChechoutHeader,
   CheckoutContainer,
-  CheckoutSection,
   InputsContainer,
+  OrderSummarySection,
   PaymentMethods,
 } from "./styles";
 import { Input } from "../../components/Input";
 import { Select } from "../../components/Select";
 import { useState } from "react";
+
+import imagemExemplo from "../../../public/images/coffees/expresso.png";
+import latte from "../../../public/images/coffees/latte.png";
+import { OrderItem } from "./components/OrderItem";
+import { TotalPrice } from "./components/TotalPrice";
 
 export function Checkout() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
@@ -31,7 +36,7 @@ export function Checkout() {
     <CheckoutContainer>
       <div>
         <h2>Complete seu pedido</h2>
-        <CheckoutSection>
+        <AddressPaymentSection>
           <ChechoutHeader $color="yellow-dark">
             <MapPinLine size={22} />
             <div>
@@ -53,8 +58,8 @@ export function Checkout() {
             <Input type="text" placeholder="Cidade" name="city" />
             <Input type="text" placeholder="UF" name="state" />
           </InputsContainer>
-        </CheckoutSection>
-        <CheckoutSection>
+        </AddressPaymentSection>
+        <AddressPaymentSection>
           <ChechoutHeader $color="purple">
             <span>
               <CurrencyDollar size={22} />
@@ -89,14 +94,16 @@ export function Checkout() {
               Dinheiro
             </Select>
           </PaymentMethods>
-        </CheckoutSection>
+        </AddressPaymentSection>
       </div>
       <div>
         <h2>Cafés selecionados</h2>
-        <Button variant="primary">CONFIRMAR PEDIDO</Button>
-        <Button variant="secondary">
-          <Trash weight="bold" size={16} /> REMOVER
-        </Button>
+        <OrderSummarySection>
+          <OrderItem name="Expresso" price={9.9} image={imagemExemplo} />
+          <OrderItem name="Latte" price={19.8} image={latte} />
+          <TotalPrice total={29.7} delivery={3.5} />
+          <Button variant="primary">CONFIRMAR PEDIDO</Button>
+        </OrderSummarySection>
       </div>
     </CheckoutContainer>
   );
