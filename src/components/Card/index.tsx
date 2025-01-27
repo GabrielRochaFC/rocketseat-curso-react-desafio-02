@@ -1,13 +1,7 @@
-import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import {
-  CardComponent,
-  CardTags,
-  Price,
-  PriceContainer,
-  PriceInput,
-} from "./styles";
-import { useState } from "react";
+import { ShoppingCart } from "phosphor-react";
+import { CardComponent, CardTags, Price, PriceContainer } from "./styles";
 import { Button } from "../Button";
+import { InputNumber } from "../InputNumber";
 
 interface CardProps {
   coffee: {
@@ -23,18 +17,6 @@ interface CardProps {
 export function Card({ coffee }: CardProps) {
   const { id, image, tags, title, description, price } = coffee;
 
-  const [inputValue, setInputValue] = useState(1);
-
-  function handlePriceInput(type: "plus" | "minus") {
-    if (type === "plus") {
-      setInputValue(inputValue + 1);
-    } else {
-      if (inputValue > 1) {
-        setInputValue(inputValue - 1);
-      }
-    }
-  }
-
   return (
     <CardComponent key={id}>
       <img src={image} alt={title} />
@@ -49,22 +31,7 @@ export function Card({ coffee }: CardProps) {
         <Price>
           R$ <span>{price}</span>
         </Price>
-        <PriceInput>
-          <span onClick={() => handlePriceInput("minus")}>
-            <Minus weight="bold" size={16} />
-          </span>
-          <input
-            type="number"
-            min={1}
-            step={1}
-            value={inputValue}
-            disabled
-            id={"coffee-card-" + id}
-          />
-          <span onClick={() => handlePriceInput("plus")}>
-            <Plus weight="bold" size={16} />
-          </span>
-        </PriceInput>
+        <InputNumber id={id} />
         <Button variant="icon">
           <ShoppingCart size={22} weight="fill" />
         </Button>
