@@ -87,3 +87,10 @@ export const InputsContainer = styled.div`
     grid-column: 3/4;
   }
 `;
+
+export const PaymentMethods = styled.div`
+  width: 100%;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr 1fr 1fr;
+`;

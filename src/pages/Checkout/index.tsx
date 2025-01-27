@@ -12,10 +12,21 @@ import {
   CheckoutContainer,
   CheckoutSection,
   InputsContainer,
+  PaymentMethods,
 } from "./styles";
 import { Input } from "../../components/Input";
+import { Select } from "../../components/Select";
+import { useState } from "react";
 
 export function Checkout() {
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
+    string | null
+  >(null);
+
+  const handleSelectPaymentMethod = (method: string) => {
+    setSelectedPaymentMethod(method);
+  };
+
   return (
     <CheckoutContainer>
       <div>
@@ -55,23 +66,29 @@ export function Checkout() {
               </p>
             </div>
           </ChechoutHeader>
-          <div>
-            <label>
-              <input type="radio" name="payment" value="credit" />
+          <PaymentMethods>
+            <Select
+              onClick={() => handleSelectPaymentMethod("credit-card")}
+              selected={selectedPaymentMethod === "credit-card"}
+            >
               <CreditCard size={16} />
               Cartão de crédito
-            </label>
-            <label>
-              <input type="radio" name="payment" value="debit" />
+            </Select>
+            <Select
+              onClick={() => handleSelectPaymentMethod("debit-card")}
+              selected={selectedPaymentMethod === "debit-card"}
+            >
               <Bank size={16} />
               Cartão de Débito
-            </label>
-            <label>
-              <input type="radio" name="payment" value="cash" />
+            </Select>
+            <Select
+              onClick={() => handleSelectPaymentMethod("money")}
+              selected={selectedPaymentMethod === "money"}
+            >
               <Money size={16} />
               Dinheiro
-            </label>
-          </div>
+            </Select>
+          </PaymentMethods>
         </CheckoutSection>
       </div>
       <div>
