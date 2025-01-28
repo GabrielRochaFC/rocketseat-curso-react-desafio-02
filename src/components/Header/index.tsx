@@ -2,10 +2,11 @@ import { NavLink } from "react-router-dom";
 import logoCofee from "../../../public/logo.svg";
 import { ButtonsDiv, HeaderContainer } from "./styles";
 import { MapPin, ShoppingCart } from "phosphor-react";
-import { useState } from "react";
+import { useContext } from "react";
+import { OrderContext } from "../../contexts/OrderContext";
 
 export function Header() {
-  const [orderQuantity, setOrderQuantity] = useState(1);
+  const context = useContext(OrderContext);
 
   return (
     <HeaderContainer>
@@ -19,7 +20,9 @@ export function Header() {
         </button>
         <NavLink to={"/checkout"}>
           <ShoppingCart size={22} weight="fill" />
-          {orderQuantity > 0 && <span>{orderQuantity}</span>}
+          {context?.orders && context.orders.length > 0 && (
+            <span>{context.orders.length}</span>
+          )}
         </NavLink>
       </ButtonsDiv>
     </HeaderContainer>
