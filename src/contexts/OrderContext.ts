@@ -11,6 +11,7 @@ interface OrderContextData {
   orders: Order[];
   addOrder: (order: Order) => void;
   removeOrder: (id: string) => void;
+  updateOrder: (id: string, quantity: number) => void;
 }
 
 export const OrderContext = createContext<OrderContextData | null>(null);

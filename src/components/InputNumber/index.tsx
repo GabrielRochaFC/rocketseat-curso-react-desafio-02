@@ -6,26 +6,28 @@ interface InputNumberProps {
   id?: string;
   height?: "2rem" | "2.375rem";
   onChange?: (value: number) => void;
+  quantity?: number;
 }
 
 export function InputNumber({
   id,
   height = "2.375rem",
   onChange,
+  quantity,
 }: InputNumberProps) {
-  const [inputValue, setInputValue] = useState(1);
+  const [inputValue, setInputValue] = useState(quantity ? quantity : 1);
 
   function handlePriceInput(type: "plus" | "minus") {
     if (type === "plus") {
       setInputValue(inputValue + 1);
       if (onChange) {
-        onChange(inputValue);
+        onChange(inputValue + 1);
       }
     } else {
       if (inputValue > 1) {
         setInputValue(inputValue - 1);
         if (onChange) {
-          onChange(inputValue);
+          onChange(inputValue - 1);
         }
       }
     }

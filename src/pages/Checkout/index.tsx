@@ -16,13 +16,13 @@ import {
 } from "./styles";
 import { Input } from "../../components/Input";
 import { Select } from "../../components/Select";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
-import imagemExemplo from "../../../public/images/coffees/expresso.png";
-import latte from "../../../public/images/coffees/latte.png";
 import { OrderItem } from "./components/OrderItem";
 import { TotalPrice } from "./components/TotalPrice";
 import { NavLink } from "react-router-dom";
+import { OrderContext } from "../../contexts/OrderContext";
+import data from "../../../data.json";
 
 export function Checkout() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
@@ -32,6 +32,8 @@ export function Checkout() {
   const handleSelectPaymentMethod = (method: string) => {
     setSelectedPaymentMethod(method);
   };
+
+  const context = useContext(OrderContext);
 
   return (
     <CheckoutContainer>
@@ -100,9 +102,30 @@ export function Checkout() {
       <div>
         <h2>Cafés selecionados</h2>
         <OrderSummarySection>
-          <OrderItem name="Expresso" price={9.9} image={imagemExemplo} />
-          <OrderItem name="Latte" price={19.8} image={latte} />
-          <TotalPrice total={29.7} delivery={3.5} />
+          {context?.orders.map((item) => (
+            <OrderItem
+              key={item.id}
+              id={item.id}
+              name={item.product}
+              price={item.price * item.quantity}
+              image={`public/${
+                data.coffees.find((coffee) => coffee.id === item.id)?.image
+              }`}
+              quantity={item.quantity}
+              onChange={(value) => {
+                context.updateOrder(item.id, value);
+              }}
+            />
+          ))}
+          <TotalPrice
+            total={
+              context?.orders.reduce(
+                (acc, item) => acc + item.price * item.quantity,
+                0
+              ) || 0
+            }
+            delivery={context?.orders && context.orders.length > 0 ? 3.5 : 0}
+          />
           <NavLink to="/checkout/success">
             <Button variant="primary">CONFIRMAR PEDIDO</Button>
           </NavLink>

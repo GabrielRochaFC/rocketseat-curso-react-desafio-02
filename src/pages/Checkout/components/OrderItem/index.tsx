@@ -8,14 +8,34 @@ import {
   OrderItemImageAndText,
   OrderTexts,
 } from "./styles";
+import { useContext } from "react";
+import { OrderContext } from "../../../../contexts/OrderContext";
 
 interface OrderItemProps {
+  id: string;
   name: string;
   price: number;
   image: string;
+  quantity: number;
+  onChange?: (value: number) => void;
 }
 
-export function OrderItem({ name, price, image }: OrderItemProps) {
+export function OrderItem({
+  id,
+  name,
+  price,
+  image,
+  quantity,
+  onChange,
+}: OrderItemProps) {
+  const context = useContext(OrderContext);
+
+  function handleQuantity(value: number) {
+    if (onChange) {
+      onChange(value);
+    }
+  }
+
   return (
     <OrderItemContainer>
       <OrderItemImageAndText>
@@ -31,8 +51,15 @@ export function OrderItem({ name, price, image }: OrderItemProps) {
             </p>
           </OrderTexts>
           <OrderButtons>
-            <InputNumber height="2rem" />
-            <Button variant="secondary">
+            <InputNumber
+              height="2rem"
+              quantity={quantity}
+              onChange={handleQuantity}
+            />
+            <Button
+              variant="secondary"
+              onClick={() => context?.removeOrder(id)}
+            >
               <Trash size={16} />
               REMOVER
             </Button>

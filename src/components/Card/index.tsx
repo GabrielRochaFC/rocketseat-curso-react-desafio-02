@@ -39,14 +39,19 @@ export function Card({ coffee }: CardProps) {
       <p>{description}</p>
       <PriceContainer>
         <Price>
-          R$ <span>{price}</span>
+          R$ <span>{price.toFixed(2).replace(".", ",")}</span>
         </Price>
         <InputNumber id={id} onChange={handleQuantity} />
         <Button
           variant="icon"
-          onClick={() =>
-            context?.addOrder({ id, product: title, quantity: quantity, price })
-          }
+          onClick={() => {
+            context?.addOrder({
+              id,
+              product: title,
+              quantity: quantity,
+              price,
+            });
+          }}
         >
           <ShoppingCart size={22} weight="fill" />
         </Button>
