@@ -39,5 +39,23 @@ export const ButtonsDiv = styled.div`
     color: ${(props) => props.theme["yellow-dark"]};
     border: none;
     text-decoration: none;
+
+    position: relative;
+
+    span {
+      position: absolute;
+      width: 1.25rem;
+      height: 1.25rem;
+      background-color: ${(props) => props.theme["yellow-dark"]};
+      border-radius: 50%;
+      color: ${(props) => props.theme["white"]};
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -0.5rem;
+      right: -0.5rem;
+      font-weight: 700;
+    }
   }
 `;
