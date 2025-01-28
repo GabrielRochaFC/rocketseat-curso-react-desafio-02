@@ -53,6 +53,9 @@ export const AddressPaymentSection = styled(CheckoutSection)`
 export const OrderSummarySection = styled(CheckoutSection)`
   gap: 1.5rem;
   border-radius: 6px 2.75rem 6px 2.75rem;
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const InputsContainer = styled.div`

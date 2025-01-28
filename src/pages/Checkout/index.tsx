@@ -22,6 +22,7 @@ import imagemExemplo from "../../../public/images/coffees/expresso.png";
 import latte from "../../../public/images/coffees/latte.png";
 import { OrderItem } from "./components/OrderItem";
 import { TotalPrice } from "./components/TotalPrice";
+import { NavLink } from "react-router-dom";
 
 export function Checkout() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
@@ -102,7 +103,9 @@ export function Checkout() {
           <OrderItem name="Expresso" price={9.9} image={imagemExemplo} />
           <OrderItem name="Latte" price={19.8} image={latte} />
           <TotalPrice total={29.7} delivery={3.5} />
-          <Button variant="primary">CONFIRMAR PEDIDO</Button>
+          <NavLink to="/checkout/success">
+            <Button variant="primary">CONFIRMAR PEDIDO</Button>
+          </NavLink>
         </OrderSummarySection>
       </div>
     </CheckoutContainer>
