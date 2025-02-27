@@ -1,10 +1,14 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-interface SelectProps {
-  $selected: boolean;
+interface SelectContainerProps {
+  $isSelected: boolean;
 }
 
-export const SelectContainer = styled.div<SelectProps>`
+export const SelectElement = styled.input`
+  display: none;
+`;
+
+export const SelectContainer = styled.label<SelectContainerProps>`
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -18,6 +22,14 @@ export const SelectContainer = styled.div<SelectProps>`
   transition: background-color 0.2s;
   cursor: pointer;
   border: 1px solid transparent;
+
+  ${(props) =>
+    props.$isSelected &&
+    css`
+      background-color: ${props.theme["purple-light"]};
+      border-color: ${props.theme["purple"]};
+    `}
+
   svg {
     color: ${(props) => props.theme["purple"]};
   }
@@ -25,11 +37,4 @@ export const SelectContainer = styled.div<SelectProps>`
   &:hover {
     background-color: ${(props) => props.theme["base-hover"]};
   }
-
-  ${(props) =>
-    props.$selected &&
-    `
-    background-color: ${props.theme["purple-light"]};
-    border: 1px solid ${props.theme["purple"]};
-  `}
 `;

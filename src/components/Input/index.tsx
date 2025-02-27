@@ -1,15 +1,24 @@
-import { InputHTMLAttributes } from "react";
-import { InputComponent, InputContainer, OptionalText } from "./styles";
+import {
+  ErrorText,
+  InputComponent,
+  InputContainer,
+  OptionalText,
+} from "./styles";
+import { useController, UseControllerProps } from "react-hook-form";
+import { CheckoutFormData } from "../../pages/Checkout";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  optional?: boolean;
-  name?: string; // Adicionamos a prop "name" para facilitar o uso no grid
+interface InputProps extends UseControllerProps<CheckoutFormData> {
+  label?: string;
 }
-export function Input({ optional = false, name, ...props }: InputProps) {
+
+export function Input({ label, ...props }: InputProps) {
+  const { field, fieldState } = useController(props);
+
   return (
-    <InputContainer data-name={name}>
-      <InputComponent {...props} />
-      {optional && <OptionalText>Opcional</OptionalText>}
+    <InputContainer data-name={props.name}>
+      {props.rules?.required === false && <OptionalText>Opcional</OptionalText>}
+      <InputComponent {...field} placeholder={label} />
+      {fieldState.error && <ErrorText>{fieldState.error.message}</ErrorText>}
     </InputContainer>
   );
 }

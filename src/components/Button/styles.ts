@@ -16,6 +16,11 @@ export const ButtonBase = styled.button<ButtonBaseProps>`
   cursor: pointer;
   transition: background-color 0.2s;
 
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+
   ${(props) =>
     props.$variant === "primary" &&
     css`

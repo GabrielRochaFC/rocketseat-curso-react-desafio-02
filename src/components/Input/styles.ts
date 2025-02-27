@@ -33,3 +33,9 @@ export const OptionalText = styled.span`
     display: none;
   }
 `;
+
+export const ErrorText = styled.span`
+  color: #ff4d4f;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+`;

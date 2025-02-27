@@ -3,15 +3,19 @@ import { InputContainer } from "../../components/Input/styles";
 
 export const CheckoutContainer = styled.div`
   width: 100%;
-  display: grid;
-  grid-template-columns: 40rem 1fr;
-  gap: 2rem;
   padding: 2.5rem 0;
 
   h2 {
     padding-bottom: 1rem;
     font-size: 1.125rem;
   }
+`;
+
+export const CheckoutForm = styled.form`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40rem 1fr;
+  gap: 2rem;
 `;
 
 interface ChechoutHeaderProps {
@@ -105,4 +109,11 @@ export const PaymentMethods = styled.div`
   display: grid;
   gap: 0.75rem;
   grid-template-columns: 1fr 1fr 1fr;
+`;
+
+export const ErrorText = styled.span`
+  color: #ff4d4f;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  grid-column: span 3;
 `;
