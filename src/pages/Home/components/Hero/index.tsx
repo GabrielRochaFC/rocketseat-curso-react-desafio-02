@@ -1,7 +1,7 @@
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import { HeroContainer, HeroList, HeroTexts } from "./styles";
 
-import Image from "../../../../../public/images/hero.svg";
+import Image from "/images/hero.svg?url";
 
 export function Hero() {
   return (

@@ -1,5 +1,5 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
-import delivery from "../../../public/images/delivery.svg";
+import delivery from "/images/delivery.svg?url";
 import {
   CheckoutSuccessContainer,
   OrderContent,

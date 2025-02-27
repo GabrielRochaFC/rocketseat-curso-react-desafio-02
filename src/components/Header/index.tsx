@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import logoCofee from "../../../public/logo.svg";
+import logoCofee from "/logo.svg?url";
 import { ButtonsDiv, HeaderContainer } from "./styles";
 import { MapPin, ShoppingCart } from "phosphor-react";
 import { useContext } from "react";
