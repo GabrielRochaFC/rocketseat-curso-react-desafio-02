@@ -18,7 +18,7 @@ import * as zod from "zod";
 import { OrderItem } from "./components/OrderItem";
 import { TotalPrice } from "./components/TotalPrice";
 import { useNavigate } from "react-router-dom";
-import { OrderContext } from "../../contexts/OrderContext";
+import { OrderContext, OrderInfo } from "../../contexts/OrderContext";
 import data from "../../../data.json";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -66,7 +66,18 @@ export function Checkout() {
   const context = useContext(OrderContext);
 
   function handleConfirmOrder(data: CheckoutFormData) {
-    console.log(data);
+    const orderInfo: OrderInfo = {
+      address: {
+        street: data.street,
+        number: data.number,
+        neighborhood: data.neighborhood,
+        city: data.city,
+        state: data.state,
+      },
+      payment: data.payment,
+    };
+
+    context?.confirmOrder(orderInfo);
     navigate("/checkout/success");
   }
 

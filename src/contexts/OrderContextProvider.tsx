@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { Order, OrderContext } from "./OrderContext";
+import { Order, OrderContext, OrderInfo } from "./OrderContext";
 
 interface OrderProviderProps {
   children: ReactNode;
@@ -7,6 +7,7 @@ interface OrderProviderProps {
 
 export function OrderProvider({ children }: OrderProviderProps) {
   const [orders, setOrders] = useState<Order[]>([]);
+  const [lastOrder, setLastOrder] = useState<OrderInfo | null>(null);
 
   function addOrder(order: Order) {
     const existingOrderIndex = orders.findIndex((o) => o.id === order.id);
@@ -37,9 +38,26 @@ export function OrderProvider({ children }: OrderProviderProps) {
     setOrders(updatedOrders);
   }
 
+  function clearCart() {
+    setOrders([]);
+  }
+
+  function confirmOrder(orderInfo: OrderInfo) {
+    setLastOrder(orderInfo);
+    clearCart();
+  }
+
   return (
     <OrderContext.Provider
-      value={{ orders, addOrder, removeOrder, updateOrder }}
+      value={{
+        orders,
+        lastOrder,
+        addOrder,
+        removeOrder,
+        updateOrder,
+        confirmOrder,
+        clearCart,
+      }}
     >
       {children}
     </OrderContext.Provider>

@@ -9,8 +9,25 @@ import {
   TextsContainer,
   TextsHeader,
 } from "./styles";
+import { useContext } from "react";
+import { OrderContext } from "../../contexts/OrderContext";
+import { Navigate } from "react-router-dom";
 
 export function CheckoutSuccess() {
+  const context = useContext(OrderContext);
+
+  if (!context?.lastOrder) {
+    return <Navigate to="/" />;
+  }
+
+  const { address, payment } = context.lastOrder;
+
+  const paymentMethods = {
+    "credit-card": "Cartão de Crédito",
+    "debit-card": "Cartão de Débito",
+    money: "Dinheiro",
+  };
+
   return (
     <CheckoutSuccessContainer>
       <TextsContainer>
@@ -26,9 +43,14 @@ export function CheckoutSuccess() {
               </span>
               <OrderText>
                 <p>
-                  Entrega em <span>Rua João Daniel Martinelli, 102</span>
+                  Entrega em{" "}
+                  <span>
+                    {address.street}, {address.number}
+                  </span>
                 </p>
-                <p>Farrapos - Porto Alegre, RS</p>
+                <p>
+                  {address.neighborhood} - {address.city}, {address.state}
+                </p>
               </OrderText>
             </OrderContent>
             <OrderContent $color="yellow">
@@ -49,7 +71,7 @@ export function CheckoutSuccess() {
               <OrderText>
                 <p>Pagamento na entrega</p>
                 <p>
-                  <span>Cartão de Crédito</span>
+                  <span>{paymentMethods[payment]}</span>
                 </p>
               </OrderText>
             </OrderContent>
